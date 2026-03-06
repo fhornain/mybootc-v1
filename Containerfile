@@ -25,7 +25,7 @@ RUN dnf clean all
 
 # CONFIGURATION
 COPY --chmod=0755 ./system/usr__local__bin/* /usr/local/bin/
-#COPY --chmod=0644 ./system/etc__skel__kde-bootc /etc/skel/.bashrc.d/kde-bootc
+#COPY --chmod=0644 ./system/etc__skel__kde-bootc /etc/skel/.bashrc.d/my-bootc
 COPY --chmod=0600 ./system/usr__lib__ostree__auth.json /usr/lib/ostree/auth.json
 
 # USERS
