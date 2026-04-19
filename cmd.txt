@@ -1,1 +1,26 @@
-buildah build -t my-bootc .
+1] Clone the git repo on your development machine
+git clone https://github.com/fhornaintest/mybootc-v1.git
+
+2] Run buildah command in the mybootc-v1 directory
+buildah build -t my-bootc . 
+
+3] Go to the mybootc-v1/builder subdirectory and run the following podman command
+podman run --rm -it --privileged --pull=newer \
+--security-opt label=type:unconfined_t \
+-v ./output:/output \
+-v /var/lib/containers/storage:/var/lib/containers/storage \
+-v ./config.toml:/config.toml:ro \
+quay.io/centos-bootc/bootc-image-builder:latest \
+--type iso \
+--chown 1000:1000 \
+--rootfs btrfs \
+--use-librepo=true \
+localhost/my-bootc
+
+[!] Note #3 :  
+It can take a few minutes to build the image
+
+4] Go to the mybootc-v1/builder/output subdirectory and get the iso image
+install.iso
+
+5] upload this iso file on a targeted server and it will install you unmuttable operating system 
