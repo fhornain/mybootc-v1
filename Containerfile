@@ -34,6 +34,7 @@ COPY --chmod=0644 ./system/usr__lib__credstore__home.create.admin /usr/lib/creds
 COPY --chmod=0755 ./scripts/* /tmp/scripts/
 RUN /tmp/scripts/config-users
 RUN /tmp/scripts/config-authselect && rm -r /tmp/scripts
+RUN echo "KEYMAP=mac-fr" > /etc/vconsole.conf
 RUN mkdir -p /usr/lib/bootc/kargs.d && \
     echo "vconsole.keymap=mac-fr" > /usr/lib/bootc/kargs.d/keyboard.conf
 
