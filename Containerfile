@@ -15,7 +15,7 @@ RUN dnf -y install dnf5-plugins
 #RUN dnf config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo 
 
 # INSTALL PACKAGES
-#RUN dnf -y install 
+RUN dnf -y install podman 
 RUN grep -vE '^#' /usr/local/share/my-bootc/packages-added | xargs dnf -y install --allowerasing
 
 # REMOVE PACKAGES
