@@ -46,5 +46,6 @@ RUN systemctl enable bootloader-update.service
 RUN systemctl mask bootc-fetch-apply-updates.timer
 
 # CLEAN & CHECK
+RUN dracut -f --regenerate-all
 RUN find /var/log -type f ! -empty -delete
 RUN bootc container lint
