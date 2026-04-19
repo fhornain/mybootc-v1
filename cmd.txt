@@ -2,10 +2,10 @@
 git clone https://github.com/fhornaintest/mybootc-v1.git
 
 2] Run buildah command in the mybootc-v1 directory
-buildah build -t my-bootc . 
+sudo buildah build -t my-bootc . 
 
 3] Go to the mybootc-v1/builder subdirectory and run the following podman command
-podman run --rm -it --privileged --pull=newer \
+sudo podman run --rm -it --privileged --pull=newer \
 --security-opt label=type:unconfined_t \
 -v ./output:/output \
 -v /var/lib/containers/storage:/var/lib/containers/storage \
