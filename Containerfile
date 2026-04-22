@@ -14,8 +14,7 @@ RUN jq -r .packages[] /usr/share/rpm-ostree/treefile.json > /usr/local/share/my-
 RUN dnf -y install dnf5-plugins
 #RUN dnf config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo 
 
-# INSTALL PACKAGES
-#RUN dnf -y install 
+# INSTALL PACKAGES  
 RUN grep -vE '^#' /usr/local/share/my-bootc/packages-added | xargs dnf -y install --allowerasing
 
 # REMOVE PACKAGES
