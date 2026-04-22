@@ -15,7 +15,6 @@ RUN dnf -y install dnf5-plugins
 #RUN dnf config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo 
 
 # INSTALL PACKAGES
-RUN dnf -y install podman 
 RUN grep -vE '^#' /usr/local/share/my-bootc/packages-added | xargs dnf -y install --allowerasing
 
 # REMOVE PACKAGES
@@ -34,9 +33,6 @@ COPY --chmod=0644 ./system/usr__lib__credstore__home.create.admin /usr/lib/creds
 COPY --chmod=0755 ./scripts/* /tmp/scripts/
 RUN /tmp/scripts/config-users
 RUN /tmp/scripts/config-authselect && rm -r /tmp/scripts
-RUN echo "KEYMAP=mac-fr" > /etc/vconsole.conf
-RUN mkdir -p /usr/lib/bootc/kargs.d && \
-    echo "vconsole.keymap=mac-fr" > /usr/lib/bootc/kargs.d/keyboard.conf
 
 # SYSTEMD
 COPY --chmod=0644 ./systemd/usr__lib__systemd__system__firstboot-setup.service /usr/lib/systemd/system/firstboot-setup.service
